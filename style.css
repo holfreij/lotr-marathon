@@ -265,8 +265,12 @@ main, .topbar, .footer { position: relative; z-index: 2; }
   .eyebrow .line:last-child { flex: 0 0 auto; width: clamp(20px, 6vw, 54px); }
   .hero-cta { justify-content: center; }
   .lede { margin-inline: auto; }
-  .gandalf { width: min(78%, 340px); order: -1; }
+  /* Gandalf leads on narrow screens — he's the reason for the day.
+     `order` has to sit on the grid item (the figure), not on the image inside it. */
+  .gandalf-wrap { order: -1; }
+  .gandalf { width: min(72%, 300px); height: auto; }
   .gandalf-cap { margin-top: 0; }
+  .hero { padding-bottom: 4rem; }
 }
 
 .scroll-cue {
@@ -858,3 +862,19 @@ main, .topbar, .footer { position: relative; z-index: 2; }
 .foot-credit { margin-top: .5rem; font-size: .68rem; color: rgba(168,156,130,.42); }
 .foot-credit a { color: inherit; }
 .foot-credit a:hover { color: var(--gold); }
+
+/* On narrow screens the map would shrink its labels to ~4px, so let it keep a
+   legible width and scroll sideways instead. */
+.map-scroll { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+.map-swipe { display: none; }
+
+@media (max-width: 760px) {
+  .map { min-width: 840px; }
+  .m-marker text.lbl { font-size: 15px; stroke-width: 3.5px; }
+  .m-region { letter-spacing: .2em; }
+  .map-swipe {
+    display: block; margin: 0; padding: .5rem 1rem 0;
+    font-size: .72rem; font-style: italic; color: var(--text-dim); text-align: center;
+  }
+  .map-scroll { scrollbar-width: thin; }
+}

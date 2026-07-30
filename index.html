@@ -177,6 +177,7 @@
     <div class="map-controls" id="mapControls" role="group" aria-label="Kies een route"></div>
 
     <div class="map-frame">
+      <div class="map-scroll">
       <svg class="map" id="mapSvg" viewBox="0 0 1000 780" role="img" aria-label="Gestileerde kaart van Midden-aarde met de reisroutes">
         <defs>
           <filter id="parchNoise" x="0" y="0" width="100%" height="100%">
@@ -238,6 +239,8 @@
           <text y="-46" class="m-compass-t">N</text>
         </g>
       </svg>
+      </div>
+      <p class="map-swipe" aria-hidden="true">Veeg opzij om de hele kaart te zien →</p>
 
       <div class="map-info" id="mapInfo" aria-live="polite">
         <p class="mi-empty">Klik op een plaats voor meer.</p>
