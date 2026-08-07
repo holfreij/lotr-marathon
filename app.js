@@ -28,9 +28,9 @@ const svgEl = (tag, attrs = {}) => {
 /* ── 2. Schedule ─────────────────────────────────────────────── */
 
 const SCHEDULE = [
-  { s:'08:00:00', e:'08:35:38', type:'meal', icon:'🍳', name:'First & Second Breakfast',
+  { s:'08:00:00', e:'08:35:38', showE:'08:30:00', type:'meal', icon:'🍳', name:'First & Second Breakfast',
     note:'Twee ontbijten voor negen uur. Zoals het hoort.' },
-  { s:'08:35:38', e:'10:16:00', type:'film', name:'The Fellowship of the Ring', part:'Deel 1', dur:'1u 40m',
+  { s:'08:35:38', e:'10:16:00', showS:'08:30:00', type:'film', name:'The Fellowship of the Ring', part:'Deel 1', dur:'1u 40m',
     note:'Van Bag End, via Bree en Weathertop, naar Rivendell.',
     map:['hobbiton','bree','weathertop','fords','rivendell'] },
   { s:'10:16:00', e:'10:46:00', type:'meal', icon:'☕', name:'Elevenses',
@@ -350,14 +350,14 @@ function initSchedule() {
     li.dataset.idx = i;
 
     const parts = [
-      `<span class="si-time">${it.s.slice(0, 5)}${it.s.endsWith('38') ? ':38' : ''}</span>`,
+      `<span class="si-time">${(it.showS || it.s).slice(0, 5)}</span>`,
       `<div class="si-body"${it.type === 'film' ? ' tabindex="0" role="button"' : ''}>`,
       `<div class="si-head">`,
       it.icon ? `<span class="si-icon" aria-hidden="true">${it.icon}</span>` : '',
       `<span class="si-name">${it.name}</span>`,
       it.part ? `<span class="si-part">${it.part}</span>` : '',
       it.dur ? `<span class="si-dur">${it.dur}</span>`
-             : it.e ? `<span class="si-dur">${mins(it.s, it.e)} min</span>` : '',
+             : it.e ? `<span class="si-dur">${mins(it.showS || it.s, it.showE || it.e)} min</span>` : '',
       `</div>`,
       it.note ? `<p class="si-note">${it.note}</p>` : '',
       `</div>`,
@@ -742,8 +742,8 @@ function buildICS() {
     'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:LOTR Extended Edition Marathon',
   ];
   SCHEDULE.forEach((it, i) => {
-    const start = at(it.s);
-    const end = it.e ? at(it.e) : new Date(start.getTime() + 15 * 60000);
+    const start = at(it.showS || it.s);
+    const end = it.e ? at(it.showE || it.e) : new Date(start.getTime() + 15 * 60000);
     const title = it.type === 'film' ? `🎬 ${it.name} — ${it.part}`
                 : it.type === 'end'  ? `${it.icon} ${it.name}`
                 : `${it.icon} ${it.name}`;

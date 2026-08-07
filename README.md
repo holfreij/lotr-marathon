@@ -11,9 +11,14 @@ line lands at `01:24:19,684` into the Extended Edition of *The Fellowship of the
 then puts Gandalf's line at 09:59:57 on 24 October — near enough to ten o'clock that the room
 will notice.
 
-**The site deliberately never mentions this.** It's meant to land as a surprise on the day, so
-the page shows 08:35:38 as a bare, unexplained start time and says nothing about the date's
-significance. Keep it that way when editing copy.
+**The site deliberately never mentions this**, and never even shows the real time. Every
+visible time — hero, countdown subtitle, schedule, the `.ics` download — says **08:30**. Only
+the countdown itself runs to the true 08:35:38, so it can be left on screen on the day as the
+actual cue to press play. The ~5 minute discrepancy is deliberate and won't be noticed.
+
+In `app.js` this is the `showS` / `showE` fields on a `SCHEDULE` entry: `s` and `e` are the real
+times and drive the countdown and the live "nu bezig" state; `showS` / `showE` override what is
+displayed and what goes into the calendar file. Keep it that way when editing copy.
 
 ## What's on the page
 
@@ -47,6 +52,16 @@ the room a larger screen buys.
 All schedule data lives in the `SCHEDULE` array at the top of `app.js`. Times are pinned to
 `+02:00` (the Netherlands is still on CEST on 24 October 2026), so the countdown is correct
 regardless of the visitor's own timezone.
+
+## Assets
+
+| File | Source | Note |
+|---|---|---|
+| `lotr-logo.webp` | [Wikia](https://static.wikia.nocookie.net/tvfan/images/0/0c/The_Lord_of_the_Rings_logo.png) | The film wordmark. Trademark of Middle-earth Enterprises / Warner Bros. — used here on a private party page. Trimmed and re-encoded 282 KB PNG → 72 KB WebP. |
+| `ring-inscription.webp` | [Pinterest](https://i.pinimg.com/736x/29/c6/dc/29c6dce94f5a1df77e49fce2db874ff7.jpg) | The Tengwar ring-verse. The source was a JPEG with a transparency **checkerboard baked in as real pixels**; keyed out by thresholding luminance below 170, then tinted gold. Lossless WebP, 41 KB. |
+
+Both are **self-hosted deliberately** — Wikia and Pinterest use hotlink protection and rotate
+URLs, so hotlinking would likely break before October.
 
 ## Deploying
 

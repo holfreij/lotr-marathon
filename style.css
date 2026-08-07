@@ -163,18 +163,32 @@ main, .topbar, .footer { position: relative; z-index: 2; }
 /* The One Ring, crowning the page the way lotr.com does */
 .ring-btn {
   background: none; border: 0; padding: 0; cursor: pointer;
-  width: clamp(112px, 34vw, 190px); margin-bottom: 1.4rem;
-  opacity: .92; transition: opacity .4s var(--ease);
-  animation: ringSpin 90s linear infinite;
+  width: clamp(150px, 44vw, 260px); margin-bottom: 1.2rem;
 }
-.ring-btn:hover, .ring-btn:focus-visible { opacity: 1; }
+.ring-stack { position: relative; display: block; width: 100%; aspect-ratio: 1; }
+
+/* The Tengwar ring is proportionally much thicker than the band, so it can't
+   sit *on* it. It turns just inside instead, reading as the inscription
+   glowing within the Ring. */
+.ring-script {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  animation: ringSpin 120s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(255,150,50,.75)) drop-shadow(0 0 26px rgba(255,110,30,.45));
+  opacity: .88; transition: opacity .5s var(--ease), filter .5s var(--ease);
+}
+.ring-btn:hover .ring-script, .ring-btn:focus-visible .ring-script {
+  opacity: 1;
+  filter: drop-shadow(0 0 14px rgba(255,170,70,.95)) drop-shadow(0 0 40px rgba(255,90,20,.7));
+}
 @keyframes ringSpin { to { transform: rotate(360deg); } }
+
+/* The inscription's inner edge measures 59.6 of the ring SVG's 200 units, and
+   the band's outer edge is 77.5 units at full size — so 70% is the largest the
+   band can be while still nesting inside the script. */
 .ring {
-  display: block; width: 100%; height: auto;
-  filter: drop-shadow(0 0 22px rgba(255,190,80,.5)) drop-shadow(0 0 60px rgba(255,150,50,.28));
+  position: absolute; inset: 15%; width: 70%; height: 70%;
+  filter: drop-shadow(0 0 18px rgba(255,190,80,.55)) drop-shadow(0 0 46px rgba(255,150,50,.3));
 }
-.ring-inscription { fill: var(--accent-lt); font-family: var(--rune); opacity: 0; transition: opacity .5s var(--ease); }
-.ring-btn:hover .ring-inscription, .ring-btn:focus-visible .ring-inscription { opacity: .95; fill: #ff8c3a; }
 
 .eyebrow {
   display: flex; align-items: center; justify-content: center; gap: .8rem;
@@ -184,13 +198,10 @@ main, .topbar, .footer { position: relative; z-index: 2; }
 .eyebrow .line { flex: 0 0 auto; width: 24px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
 .eyebrow .line:last-child { background: linear-gradient(to left, transparent, var(--gold)); }
 
-.hero-title { display: grid; gap: .3rem; margin-bottom: 1rem; }
-.t-the {
-  font-size: clamp(2rem, 10.5vw, 5rem); font-weight: 900;
-  letter-spacing: .015em; line-height: 1;
-  background: linear-gradient(178deg, #fff8e2 4%, var(--gold-lt) 34%, var(--gold) 58%, var(--gold-dk) 92%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  filter: drop-shadow(0 3px 14px rgba(0,0,0,.7));
+.hero-title { display: grid; gap: .5rem; margin-bottom: 1rem; justify-items: center; }
+.t-logo {
+  display: block; width: min(100%, 620px); height: auto; margin-inline: auto;
+  filter: drop-shadow(0 4px 18px rgba(0,0,0,.75)) drop-shadow(0 0 40px rgba(255,190,90,.22));
 }
 .t-sub {
   font-family: var(--rune);
