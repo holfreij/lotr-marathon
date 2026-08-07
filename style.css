@@ -737,7 +737,6 @@ main, .topbar, .footer { position: relative; z-index: 2; }
   font-family: var(--display); font-size: .66rem; letter-spacing: .2em;
   text-transform: uppercase; color: var(--text-dim);
 }
-.foot-hint { margin-top: 1.2rem; font-size: .72rem; color: rgba(168,156,130,.55); font-style: italic; }
 
 /* ---------- 15. Overlays / easter eggs ---------- */
 

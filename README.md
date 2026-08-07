@@ -33,8 +33,8 @@ displayed and what goes into the calendar file. Keep it that way when editing co
 | Bakens | The beacons of Gondor, lit in sequence |
 | Praktisch | House rules and an `.ics` download of the whole day |
 
-Easter eggs: type `mellon` or `precious`; tap the One Ring. (The typed ones are keyboard-only,
-so they're effectively desktop-only — the Ring is the one that works on a phone.)
+Easter eggs: type `mellon` or `precious`; tap the One Ring. The typed ones are keyboard-only
+and the page no longer hints at them, so in practice only the Ring will be found.
 
 ## Language
 
