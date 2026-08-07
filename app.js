@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   Gandalf Day · LOTR Extended Edition Marathon · 24 oktober 2026
+   The Lord of the Rings · Extended Edition Marathon · 24 oktober 2026
    ═══════════════════════════════════════════════════════════════ */
 (() => {
 'use strict';
@@ -31,7 +31,7 @@ const SCHEDULE = [
   { s:'08:00:00', e:'08:35:38', type:'meal', icon:'🍳', name:'First & Second Breakfast',
     note:'Twee ontbijten voor negen uur. Zoals het hoort.' },
   { s:'08:35:38', e:'10:16:00', type:'film', name:'The Fellowship of the Ring', part:'Deel 1', dur:'1u 40m',
-    note:'Om 10:00 uur precies vertelt Gandalf je hoe laat het is. Kippenvel gegarandeerd.',
+    note:'Van Bag End, via Bree en Weathertop, naar Rivendell.',
     map:['hobbiton','bree','weathertop','fords','rivendell'] },
   { s:'10:16:00', e:'10:46:00', type:'meal', icon:'☕', name:'Elevenses',
     note:'Dertig minuten. Benen strekken, koffie, tweede koffie.' },
@@ -67,8 +67,6 @@ const SCHEDULE = [
 const QUOTES = [
   { nl:'Een tovenaar komt nooit te laat, Frodo Balings. Noch te vroeg. Hij arriveert precies wanneer hij dat wil.',
     en:'A wizard is never late, Frodo Baggins. Nor is he early. He arrives precisely when he means to.', who:'Gandalf de Grijze' },
-  { nl:'Het is 10 uur ’s morgens op 24 oktober, als je ’t wilt weten.',
-    en:'It’s ten o’clock in the morning on October the 24th, if you want to know.', who:'Gandalf · Rivendell · en vandaag klopt het' },
   { nl:'Alles wat wij hoeven te beslissen, is wat we doen met de tijd die ons gegeven is.',
     en:'All we have to decide is what to do with the time that is given us.', who:'Gandalf de Grijze' },
   { nl:'GIJ ZULT NIET PASSEREN!', en:'YOU SHALL NOT PASS!', who:'Gandalf · de Brug van Khazad-dûm' },
@@ -111,11 +109,11 @@ const PLACES = [
   { id:'bree',        n:'Bree',          x:256, y:248, la:'middle',dx:  0, dy: 19, t:'The Prancing Pony. Regen, argwaan, en een Strider in de donkerste hoek.' },
   { id:'weathertop',  n:'Weathertop',    x:332, y:236, la:'middle',dx:  0, dy:-14, t:'Amon Sûl. Vijf Nazgûl, één Morgul-mes, en een wond die nooit helemaal geneest.' },
   { id:'fords',       n:'Ford of Bruinen',x:400,y:226, la:'middle',dx:  0, dy: 20, t:'“If you want him, come and claim him!” En toen kwam het water.' },
-  { id:'rivendell',   n:'Rivendell',     x:448, y:208, la:'start', dx: 13, dy: -4, t:'Imladris. Hier ontwaakt Frodo, hier vergadert de Raad van Elrond — en hier is het tien uur ’s morgens op 24 oktober.' },
+  { id:'rivendell',   n:'Rivendell',     x:448, y:208, la:'start', dx: 13, dy: -4, t:'Imladris. Hier ontwaakt Frodo, en hier vergadert de Raad van Elrond.' },
   { id:'caradhras',   n:'Caradhras',     x:490, y:282, la:'start', dx: 14, dy:  0, t:'De Wrede. Saruman’s storm drijft het Gezelschap terug — en dus de berg ín.' },
-  { id:'moria',       n:'Moria',         x:470, y:326, la:'end',   dx:-13, dy:  4, t:'Khazad-dûm. Spreek vriend en treed binnen. Wat daarna komt, is minder gastvrij.' },
+  { id:'moria',       n:'Moria',         x:470, y:326, la:'end',   dx:-13, dy:  4, t:'Khazad-dûm. “Speak, friend, and enter.” Wat daarna komt, is minder gastvrij.' },
   { id:'lorien',      n:'Lothlórien',    x:540, y:350, la:'start', dx: 13, dy:  4, t:'Het Gouden Woud van Galadriel. Mallorn, mithril, lembas — en een spiegel die je liever niet had ingekeken.' },
-  { id:'fangorn',     n:'Fangorn',       x:520, y:414, la:'end',   dx:-13, dy: -6, t:'Hoom. Hom. Haast je niet — zeg nooit iets als het niet de moeite waard is om er lang over te doen.' },
+  { id:'fangorn',     n:'Fangorn',       x:520, y:414, la:'end',   dx:-13, dy: -6, t:'“Don’t be hasty.” Zeg nooit iets als het niet de moeite waard is om er lang over te doen.' },
   { id:'isengard',    n:'Isengard',      x:480, y:448, la:'end',   dx:-13, dy:  4, t:'Orthanc. Saruman’s smederij, tot de bomen genoeg hebben gezien.' },
   { id:'argonath',    n:'Argonath',      x:566, y:428, la:'start', dx: 13, dy: -6, t:'De Pilaren der Koningen. Aragorn vaart onder zijn eigen voorouders door.' },
   { id:'amonhen',     n:'Amon Hen',      x:578, y:458, la:'end',   dx:-13, dy: 12, t:'Hier breekt het Gezelschap. Boromir valt, Merry en Pippin worden meegenomen, en Frodo vertrekt alleen. Nou ja — bijna alleen.' },
@@ -191,12 +189,8 @@ function initEmbers() {
   const cv = $('#embers');
   if (!cv || REDUCED) { if (cv) cv.remove(); return; }
   const ctx = cv.getContext('2d');
-  let w, h, parts = [], tint = '255,200,120';
-
-  const readTint = () => {
-    const realm = document.documentElement.dataset.realm;
-    tint = realm === 'mordor' ? '255,110,50' : realm === 'rohan' ? '255,196,96' : '190,230,150';
-  };
+  let w, h, parts = [];
+  const tint = '255,196,96';   // Rohan gold
 
   const resize = () => {
     const dpr = Math.min(devicePixelRatio || 1, 2);
@@ -235,38 +229,9 @@ function initEmbers() {
     requestAnimationFrame(frame);
   }
 
-  readTint(); resize();
+  resize();
   addEventListener('resize', resize, { passive: true });
-  addEventListener('realmchange', readTint);
   requestAnimationFrame(frame);
-}
-
-/* ══════════════════════════════════════════════════════════════
-   Realm switch — the palette travels from the Shire to Mordor
-   ══════════════════════════════════════════════════════════════ */
-
-function setRealm(realm, manual = true) {
-  document.documentElement.dataset.realm = realm;
-  $$('[data-realm-btn]').forEach(b =>
-    b.setAttribute('aria-pressed', String(b.dataset.realmBtn === realm)));
-  if (manual) realmLocked = true;
-  dispatchEvent(new Event('realmchange'));
-}
-let realmLocked = false;
-
-function initRealm() {
-  $$('[data-realm-btn]').forEach(b =>
-    b.addEventListener('click', () => setRealm(b.dataset.realmBtn)));
-}
-
-/* On the day itself the page travels along with the marathon. */
-function autoRealm(now) {
-  if (realmLocked) return;
-  const t = now.getTime();
-  let realm = 'shire';
-  if (t >= at('13:05:00').getTime()) realm = 'rohan';
-  if (t >= at('17:55:00').getTime()) realm = 'mordor';
-  if (document.documentElement.dataset.realm !== realm) setRealm(realm, false);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -312,7 +277,6 @@ function initCountdown() {
   function tick() {
     const now = new Date();
     const diff = START - now;
-    autoRealm(now);
 
     if (diff > 0) {
       const s = Math.floor(diff / 1000);
@@ -336,8 +300,8 @@ function initCountdown() {
       for (const k of ['d','h','m','s']) paint(k, '0');
       flav.classList.remove('panic');
       flav.textContent = past
-        ? 'De reis is volbracht. Tot de volgende Gandalf Day.'
-        : 'HET IS TIEN UUR ’S MORGENS OP 24 OKTOBER!';
+        ? 'De reis is volbracht. Tot de volgende keer.'
+        : 'Het is begonnen. Veel plezier.';
       meals.textContent = '';
       footDays.textContent = past ? 'volbracht' : 'vandaag';
     }
@@ -387,7 +351,6 @@ function initSchedule() {
 
     const parts = [
       `<span class="si-time">${it.s.slice(0, 5)}${it.s.endsWith('38') ? ':38' : ''}</span>`,
-      `<span class="si-dot" aria-hidden="true"></span>`,
       `<div class="si-body"${it.type === 'film' ? ' tabindex="0" role="button"' : ''}>`,
       `<div class="si-head">`,
       it.icon ? `<span class="si-icon" aria-hidden="true">${it.icon}</span>` : '',
@@ -619,6 +582,8 @@ function buildMarkers() {
       id: `pin-${p.id}`, tabindex: '0', role: 'button',
       'aria-label': `${p.n} — meer informatie`,
     });
+    // invisible generous hit area — a 5px pin is far too small for a thumb
+    grp.appendChild(svgEl('circle', { class:'hit', cx:p.x, cy:p.y, r:18 }));
     grp.appendChild(svgEl('circle', { class:'pin', cx:p.x, cy:p.y, r:5 }));
     const label = svgEl('text', {
       class:'lbl', x: p.x + p.dx, y: p.y + p.dy + 4, 'text-anchor': p.la,
@@ -722,7 +687,7 @@ function initMap() {
    ══════════════════════════════════════════════════════════════ */
 
 function initBeacons() {
-  const wrap = $('#beacons'), line = $('#beaconLine');
+  const wrap = $('#beacons'), line = $('#beaconLine'), sub = $('#beaconLineSub');
   BEACONS.forEach((name, i) => {
     const b = document.createElement('button');
     b.className = 'beacon'; b.type = 'button';
@@ -744,13 +709,18 @@ function initBeacons() {
   beacons[0].addEventListener('click', () => {
     if (lighting) return;
     lighting = true;
-    line.textContent = 'De bakens zijn ontstoken!';
+    line.textContent = 'The beacons are lit!';
+    sub.textContent  = 'De bakens zijn ontstoken!';
     beacons.forEach((b, i) => setTimeout(() => {
       b.classList.add('lit');
       if (i === beacons.length - 1) {
-        setTimeout(() => { line.textContent = 'Gondor roept om hulp!'; }, 700);
         setTimeout(() => {
-          line.textContent = 'En Rohan zal antwoorden. 🐎';
+          line.textContent = 'Gondor calls for aid!';
+          sub.textContent  = 'Gondor roept om hulp!';
+        }, 700);
+        setTimeout(() => {
+          line.textContent = 'And Rohan will answer. 🐎';
+          sub.textContent  = 'En Rohan zal antwoorden.';
           lighting = false;
         }, 2600);
       }
@@ -768,8 +738,8 @@ function icsStamp(d) {
 
 function buildICS() {
   const L = [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//lotr.rolf.bible//Gandalf Day//NL',
-    'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:LOTR Marathon — Gandalf Day',
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//lotr.rolf.bible//LOTR Marathon//NL',
+    'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:LOTR Extended Edition Marathon',
   ];
   SCHEDULE.forEach((it, i) => {
     const start = at(it.s);
@@ -779,7 +749,7 @@ function buildICS() {
                 : `${it.icon} ${it.name}`;
     L.push(
       'BEGIN:VEVENT',
-      `UID:gandalfday-2026-${i}@lotr.rolf.bible`,
+      `UID:lotrmarathon-2026-${i}@lotr.rolf.bible`,
       `DTSTAMP:${icsStamp(new Date())}`,
       `DTSTART:${icsStamp(start)}`,
       `DTEND:${icsStamp(end)}`,
@@ -797,7 +767,7 @@ function initICS() {
     const blob = new Blob([buildICS()], { type: 'text/calendar;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'gandalf-day-2026.ics';
+    a.download = 'lotr-marathon-2026.ics';
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   });
@@ -842,7 +812,8 @@ const EGGS = {
         <path class="durin-arch" d="M130,44 l10,14 l-10,14 l-10,-14 Z"/>
       </svg>
       <p class="ov-title">Mellon.</p>
-      <p class="ov-sub">De Deuren van Durin staan open. Een raadsel dat veel te lang duurde, en het antwoord stond er gewoon.</p>
+      <p class="ov-sub">The Doors of Durin stand open.</p>
+      <p class="ov-sub-nl">Een raadsel dat veel te lang duurde — en het antwoord stond er gewoon.</p>
     `);
     requestAnimationFrame(() => setTimeout(() => $('.durin')?.classList.add('open'), 120));
   },
@@ -866,7 +837,9 @@ const EGGS = {
         <ellipse class="eye-pupil" cx="200" cy="130" rx="20" ry="88"/>
       </svg>
       <p class="ov-title">Hij ziet je.</p>
-      <p class="ov-sub">Ash nazg durbatulûk, ash nazg gimbatul, ash nazg thrakatulûk agh burzum-ishi krimpatul.<br><em>Eén Ring om allen te regeren.</em></p>
+      <p class="ov-sub">Ash nazg durbatulûk, ash nazg gimbatul,<br>ash nazg thrakatulûk agh burzum-ishi krimpatul.</p>
+      <p class="ov-sub">“One Ring to rule them all.”</p>
+      <p class="ov-sub-nl">“Eén Ring om allen te regeren.”</p>
     `);
   },
 
@@ -875,59 +848,13 @@ const EGGS = {
       <div class="gollum-eyes" aria-hidden="true">
         <span class="gollum-eye"></span><span class="gollum-eye"></span>
       </div>
-      <p class="ov-title">Mijn preciousss…</p>
-      <p class="ov-sub">Sneaky little hobbitses. Wat heeft het in zijn zakken, hm?</p>
+      <p class="ov-title">My preciousss…</p>
+      <p class="ov-sub">Sneaky little hobbitses. What has it got in its pocketses, hmm?</p>
+      <p class="ov-sub-nl">“Wat heeft het in zijn zakken, hm?”</p>
     `);
   },
 
-  balrog: () => {
-    openOverlay('balrog', `
-      <svg class="balrog-svg" viewBox="0 0 300 240" aria-hidden="true">
-        <defs>
-          <radialGradient id="balFire" cx="50%" cy="60%" r="60%">
-            <stop offset="0%" stop-color="#ffd27a"/><stop offset="45%" stop-color="#ff6a1e"/>
-            <stop offset="100%" stop-color="#5c1200"/>
-          </radialGradient>
-        </defs>
-        <path fill="url(#balFire)" opacity=".65"
-              d="M20,236 C34,180 20,150 44,120 C36,164 62,150 70,116 C82,152 96,132 100,104
-                 C114,148 132,120 138,86 C158,132 178,116 184,84 C200,130 224,118 232,88
-                 C246,124 262,150 254,190 C250,214 244,228 240,236 Z"/>
-        <path fill="#150403"
-              d="M96,236 C92,196 78,182 84,158 C90,136 112,132 116,110 C104,96 108,74 124,66
-                 C112,52 122,32 142,30 C150,14 176,14 184,30 C204,32 214,52 202,66
-                 C218,74 222,96 210,110 C214,132 236,136 242,158 C248,182 234,196 230,236 Z"/>
-        <path fill="#150403" d="M124,66 C104,52 74,36 48,42 C74,44 100,58 116,74 Z"/>
-        <path fill="#150403" d="M202,66 C222,52 252,36 278,42 C252,44 226,58 210,74 Z"/>
-        <circle cx="146" cy="58" r="7" fill="#ffb03a"/>
-        <circle cx="180" cy="58" r="7" fill="#ffb03a"/>
-      </svg>
-      <p class="ov-title">GIJ ZULT NIET PASSEREN!</p>
-      <p class="ov-sub">De donkere vlam zal je niet baten, vlam van Udûn. Ga terug naar de Schaduw.</p>
-    `);
-    document.body.classList.add('shake');
-    setTimeout(() => document.body.classList.remove('shake'), 1100);
-  },
-
-  eagles: () => {
-    openOverlay('eagles', `
-      <p class="ov-title">De Adelaars komen!</p>
-      <p class="ov-sub">Gwaihir, Heer van de Winden. Altijd precies op tijd, en toch altijd te laat om de hele wandeling te besparen.</p>
-    `);
-    for (let i = 0; i < 7; i++) {
-      const e = document.createElement('div');
-      e.className = 'eagle';
-      e.textContent = '🦅';
-      e.style.top = `${10 + Math.random() * 65}vh`;
-      e.style.animationDelay = `${i * .38}s`;
-      e.style.animationDuration = `${5 + Math.random() * 2.5}s`;
-      document.body.appendChild(e);
-      setTimeout(() => e.remove(), 9000);
-    }
-  },
 };
-
-const KONAMI = 'arrowup,arrowup,arrowdown,arrowdown,arrowleft,arrowright,arrowleft,arrowright,b,a';
 
 function initEggs() {
   ov.root = $('#overlay');
@@ -937,22 +864,15 @@ function initEggs() {
   addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
 
   $('#ringBtn').addEventListener('click', EGGS.eye);
-  $('#balrogBtn').addEventListener('click', EGGS.balrog);
 
-  let typed = '', keys = [];
+  let typed = '';
   addEventListener('keydown', e => {
     const tag = e.target.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-
-    keys.push(e.key.toLowerCase());
-    if (keys.length > 10) keys.shift();
-    if (keys.join(',') === KONAMI) { keys = []; EGGS.eagles(); return; }
-
     if (e.key.length !== 1) return;
     typed = (typed + e.key.toLowerCase()).slice(-12);
     if (typed.endsWith('mellon'))   { typed = ''; EGGS.durin(); }
     if (typed.endsWith('precious')) { typed = ''; EGGS.gollum(); }
-    if (typed.endsWith('balrog'))   { typed = ''; EGGS.balrog(); }
   });
 }
 
@@ -961,7 +881,6 @@ function initEggs() {
    ══════════════════════════════════════════════════════════════ */
 
 initEmbers();
-initRealm();
 initSchedule();
 initCountdown();
 initPalantir();

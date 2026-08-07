@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="nl" data-realm="shire">
+<html lang="nl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Gandalf Day · The Lord of the Rings Marathon · 24 oktober 2026</title>
-<meta name="description" content="24 oktober 2026 — Gandalf Day. Een complete Lord of the Rings Extended Edition marathon, van First Breakfast tot The end. Met aftelklok, schema en een kaart van Midden-aarde.">
-<meta name="theme-color" content="#0b0907">
-<meta property="og:title" content="Gandalf Day · The Lord of the Rings Marathon">
-<meta property="og:description" content="24 oktober 2026, 08:35:38. Want dan zegt Gandalf dat het tien uur 's morgens is op 24 oktober — precies wanneer het dat ook is.">
+<title>The Lord of the Rings · Extended Edition Marathon · 24 oktober 2026</title>
+<meta name="description" content="Zaterdag 24 oktober 2026: alle drie de films in de Extended Edition, van First Breakfast tot The end. Met aftelklok, schema en een kaart van Midden-aarde.">
+<meta name="theme-color" content="#0b0806">
+<meta property="og:title" content="The Lord of the Rings · Extended Edition Marathon">
+<meta property="og:description" content="24 oktober 2026. Eén dag, drie films, zeven maaltijden. Om 08:35:38 gaat het licht uit.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%A7%99%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%92%8D%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=MedievalSharp&display=swap" rel="stylesheet">
@@ -25,20 +25,15 @@
 <header class="topbar" id="top">
   <a class="brand" href="#hero">
     <span class="brand-rune" aria-hidden="true">✦</span>
-    <span class="brand-txt">Gandalf&nbsp;Day</span>
+    <span class="brand-txt">24&nbsp;oktober</span>
   </a>
   <nav class="topnav" aria-label="Hoofdmenu">
     <a href="#aftellen">Aftellen</a>
     <a href="#schema">Schema</a>
-    <a href="#gezelschap">Het Gezelschap</a>
+    <a href="#gezelschap">Gezelschap</a>
     <a href="#kaart">Kaart</a>
     <a href="#praktisch">Praktisch</a>
   </nav>
-  <div class="realm-switch" role="group" aria-label="Kies je rijk">
-    <button type="button" data-realm-btn="shire" aria-pressed="true"><span aria-hidden="true">🍃</span><em>Shire</em></button>
-    <button type="button" data-realm-btn="rohan" aria-pressed="false"><span aria-hidden="true">🐎</span><em>Rohan</em></button>
-    <button type="button" data-realm-btn="mordor" aria-pressed="false"><span aria-hidden="true">🔥</span><em>Mordor</em></button>
-  </div>
 </header>
 
 <main>
@@ -47,30 +42,48 @@
 <section id="hero" class="hero">
   <div class="hero-inner">
 
-    <div class="hero-copy">
-      <p class="eyebrow"><span class="line" aria-hidden="true"></span>Zaterdag 24 oktober 2026<span class="line" aria-hidden="true"></span></p>
-      <h1 class="hero-title">
-        <span class="t-the">The Lord of the Rings</span>
-        <span class="t-sub">Extended&nbsp;Edition Marathon</span>
-      </h1>
-      <p class="hero-tag">Eén dag. Drie films. Zeven maaltijden.<br>Negen wandelaars, en een bank.</p>
-      <p class="lede">
-        Op <strong>24 oktober</strong> vieren we <strong>Gandalf&nbsp;Day</strong>. Waarom die datum?
-        Omdat Gandalf in Rivendell tegen Frodo zegt dat het <em>tien uur 's morgens is op 24 oktober</em> —
-        en als we om <strong>08:35:38</strong> op play drukken, zegt hij dat precies wanneer het dat ook echt is.
-      </p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#aftellen">Hoe lang nog?</a>
-        <a class="btn" href="#schema">Bekijk het schema</a>
-      </div>
+    <button class="ring-btn" type="button" id="ringBtn" aria-label="De Ene Ring — beter niet aanraken">
+      <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"   stop-color="#8a6a20"/>
+            <stop offset="22%"  stop-color="#f2d67e"/>
+            <stop offset="46%"  stop-color="#b3871f"/>
+            <stop offset="70%"  stop-color="#ffeeb0"/>
+            <stop offset="100%" stop-color="#7d5c17"/>
+          </linearGradient>
+          <path id="ringPath" d="M100,100 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/>
+        </defs>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="url(#goldG)" stroke-width="15"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#fff6d8" stroke-width="1.6" opacity=".5"/>
+        <circle cx="100" cy="100" r="62.5" fill="none" stroke="#3a2a08" stroke-width="1.2" opacity=".6"/>
+        <text class="ring-inscription" font-size="9.5" letter-spacing="1.4">
+          <textPath href="#ringPath" startOffset="0%">
+            Ash nazg durbatulûk · ash nazg gimbatul · ash nazg thrakatulûk agh burzum-ishi krimpatul ·
+          </textPath>
+        </text>
+      </svg>
+    </button>
+
+    <p class="eyebrow"><span class="line" aria-hidden="true"></span>Zaterdag 24 oktober 2026<span class="line" aria-hidden="true"></span></p>
+
+    <h1 class="hero-title">
+      <span class="t-the">The Lord of the Rings</span>
+      <span class="t-sub">Extended&nbsp;Edition Marathon</span>
+    </h1>
+
+    <p class="hero-tag">Eén dag. Drie films. Zeven maaltijden.<br>Negen wandelaars, en een bank.</p>
+
+    <p class="lede">
+      Alle drie de films in de lange versie, in zes delen, met pauzes en maaltijden zoals het
+      een hobbit betaamt. Deur open om <strong>08:00</strong>. Om <strong>08:35:38</strong>
+      gaat het licht uit — en dan wachten we op niemand meer.
+    </p>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#aftellen">Hoe lang nog?</a>
+      <a class="btn" href="#schema">Bekijk het schema</a>
     </div>
-
-    <figure class="gandalf-wrap">
-      <img class="gandalf" src="gandalf.svg" width="1675" height="1578" fetchpriority="high"
-           alt="Pentekening van Gandalf de Grijze">
-      <figcaption class="gandalf-cap">&ldquo;Een tovenaar komt nooit te laat.&rdquo;</figcaption>
-    </figure>
-
   </div>
 
   <a class="scroll-cue" href="#aftellen" aria-label="Scroll naar het aftellen">
@@ -82,39 +95,14 @@
 <!-- ══════════════════════ COUNTDOWN ══════════════════════ -->
 <section id="aftellen" class="sec sec-count">
   <div class="wrap">
-    <h2 class="sec-title"><span>Aftellen tot de eerste kadrering</span></h2>
+    <h2 class="sec-title"><span>Aftellen tot de eerste scène</span></h2>
     <p class="sec-sub">24 oktober 2026 · 08:35:38 · Nederlandse tijd</p>
 
-    <div class="count-stage">
-      <button class="ring-btn" type="button" id="ringBtn" aria-label="De Ene Ring — niet aanraken">
-        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
-          <defs>
-            <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%"   stop-color="#8a6a20"/>
-              <stop offset="22%"  stop-color="#f2d67e"/>
-              <stop offset="46%"  stop-color="#b3871f"/>
-              <stop offset="70%"  stop-color="#ffeeb0"/>
-              <stop offset="100%" stop-color="#7d5c17"/>
-            </linearGradient>
-            <path id="ringPath" d="M100,100 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/>
-          </defs>
-          <circle cx="100" cy="100" r="70" fill="none" stroke="url(#goldG)" stroke-width="15"/>
-          <circle cx="100" cy="100" r="70" fill="none" stroke="#fff6d8" stroke-width="1.6" opacity=".55"/>
-          <circle cx="100" cy="100" r="62.5" fill="none" stroke="#3a2a08" stroke-width="1.2" opacity=".6"/>
-          <text class="ring-inscription" font-size="9.5" letter-spacing="1.4">
-            <textPath href="#ringPath" startOffset="0%">
-              Ash nazg durbatulûk · ash nazg gimbatul · ash nazg thrakatulûk agh burzum-ishi krimpatul ·
-            </textPath>
-          </text>
-        </svg>
-      </button>
-
-      <div class="count-grid" id="countGrid" role="timer" aria-live="off">
-        <div class="cu"><span class="cu-n" data-cd="d">--</span><span class="cu-l">dagen</span></div>
-        <div class="cu"><span class="cu-n" data-cd="h">--</span><span class="cu-l">uren</span></div>
-        <div class="cu"><span class="cu-n" data-cd="m">--</span><span class="cu-l">minuten</span></div>
-        <div class="cu"><span class="cu-n" data-cd="s">--</span><span class="cu-l">seconden</span></div>
-      </div>
+    <div class="count-grid" id="countGrid" role="timer" aria-live="off">
+      <div class="cu"><span class="cu-n" data-cd="d">--</span><span class="cu-l">dagen</span></div>
+      <div class="cu"><span class="cu-n" data-cd="h">--</span><span class="cu-l">uren</span></div>
+      <div class="cu"><span class="cu-n" data-cd="m">--</span><span class="cu-l">min</span></div>
+      <div class="cu"><span class="cu-n" data-cd="s">--</span><span class="cu-l">sec</span></div>
     </div>
 
     <p class="count-flavour" id="countFlavour" aria-live="polite">De klok wordt opgewonden…</p>
@@ -140,8 +128,8 @@
       <p class="palantir-hint">Kijk erin. Op eigen risico.</p>
     </div>
     <blockquote class="quote" id="quoteBox">
-      <p class="q-nl" id="qNl">…</p>
-      <p class="q-en" id="qEn">…</p>
+      <p class="q-main" id="qEn">…</p>
+      <p class="q-sub"  id="qNl">…</p>
       <cite class="q-who" id="qWho"></cite>
     </blockquote>
   </div>
@@ -154,7 +142,7 @@
     <p class="sec-sub">Zeven maaltijden, zoals het een hobbit betaamt. En toevallig ook drie films.</p>
     <ol class="schedule" id="scheduleList"></ol>
     <p class="schedule-note">
-      Klik op een filmblok om te zien welk stuk Midden-aarde je op dat moment doorkruist.
+      Tik op een filmblok om te zien welk stuk Midden-aarde je op dat moment doorkruist.
     </p>
   </div>
 </section>
@@ -162,7 +150,7 @@
 <!-- ══════════════════════ FELLOWSHIP ══════════════════════ -->
 <section id="gezelschap" class="sec sec-fellowship">
   <div class="wrap">
-    <h2 class="sec-title"><span>Het Gezelschap van de Ring</span></h2>
+    <h2 class="sec-title"><span>The Fellowship of the Ring</span></h2>
     <p class="sec-sub">Negen wandelaars, tegenover negen Ringgeesten. Kies er één en volg hem op de kaart.</p>
     <ul class="fellowship" id="fellowshipList"></ul>
   </div>
@@ -178,7 +166,7 @@
 
     <div class="map-frame">
       <div class="map-scroll">
-      <svg class="map" id="mapSvg" viewBox="0 0 1000 780" role="img" aria-label="Gestileerde kaart van Midden-aarde met de reisroutes">
+      <svg class="map" id="mapSvg" viewBox="0 0 1000 720" role="img" aria-label="Gestileerde kaart van Midden-aarde met de reisroutes">
         <defs>
           <filter id="parchNoise" x="0" y="0" width="100%" height="100%">
             <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="n"/>
@@ -201,27 +189,27 @@
         </defs>
 
         <!-- parchment -->
-        <rect class="m-parch" x="0" y="0" width="1000" height="780" filter="url(#parchNoise)"/>
+        <rect class="m-parch" x="0" y="0" width="1000" height="720" filter="url(#parchNoise)"/>
 
         <!-- the Great Sea (west) and the Bay of Belfalas (south) -->
-        <path class="m-sea" fill="url(#seaG)" d="M0,0 L0,780 L150,780 C148,678 118,624 108,562 C96,492 118,428 106,362 C92,296 126,230 114,166 C104,110 76,58 70,0 Z"/>
-        <path class="m-sea" fill="url(#seaG)" d="M150,780 L830,780 C800,742 742,716 686,704 C630,692 580,720 532,728 C460,738 380,748 340,760 C300,770 200,774 150,780 Z"/>
+        <path class="m-sea" fill="url(#seaG)" d="M0,0 L0,720 L150,720 C150,650 120,600 110,540 C98,470 120,410 108,346 C96,282 128,220 116,158 C106,104 78,54 74,0 Z"/>
+        <path class="m-sea" fill="url(#seaG)" d="M150,720 L720,720 C700,672 650,640 604,626 C548,610 500,644 452,650 C380,660 300,672 260,690 C220,706 190,712 150,720 Z"/>
 
         <!-- coastline ink -->
-        <path class="m-coast" fill="none" d="M70,0 C76,58 104,110 114,166 C126,230 92,296 106,362 C118,428 96,492 108,562 C118,624 148,678 150,780"/>
-        <path class="m-coast" fill="none" d="M150,780 C200,774 300,770 340,760 C380,748 460,738 532,728 C580,720 630,692 686,704 C742,716 800,742 830,780"/>
+        <path class="m-coast" fill="none" d="M74,0 C78,54 106,104 116,158 C128,220 96,282 108,346 C120,410 98,470 110,540 C120,600 150,650 150,720"/>
+        <path class="m-coast" fill="none" d="M150,720 C190,712 220,706 260,690 C300,672 380,660 452,650 C500,644 548,610 604,626 C650,640 700,672 720,720"/>
 
         <!-- Anduin, the Great River -->
-        <path class="m-river" d="M498,100 C516,180 528,254 540,330 C550,384 556,406 566,428 C582,462 588,478 604,504 C628,542 648,562 676,590 C704,618 726,652 742,700"/>
+        <path class="m-river" d="M486,96 C500,160 512,232 520,296 C528,352 540,396 552,438 C566,486 580,528 594,568 C606,600 612,622 610,640"/>
         <!-- Bruinen / Loudwater -->
-        <path class="m-river m-river-sm" d="M470,214 C440,224 410,232 380,242 C348,252 316,260 286,264"/>
+        <path class="m-river m-river-sm" d="M436,196 C412,214 388,224 360,236 C330,250 300,262 268,268"/>
         <!-- Isen -->
-        <path class="m-river m-river-sm" d="M474,452 C440,480 404,510 366,538 C330,564 292,590 256,616"/>
+        <path class="m-river m-river-sm" d="M452,432 C420,458 388,486 352,512 C316,540 280,566 244,592"/>
         <!-- Entwash -->
-        <path class="m-river m-river-sm" d="M528,428 C544,466 556,502 564,538 C572,570 578,598 584,626"/>
+        <path class="m-river m-river-sm" d="M512,418 C528,452 540,486 548,520 C556,552 560,580 566,604"/>
 
         <!-- Mordor plateau -->
-        <path class="m-mordor" fill="url(#mordorG)" d="M744,438 C786,412 868,406 928,430 C966,446 974,506 958,554 C940,602 870,622 804,610 C750,600 728,566 724,518 C720,482 728,452 744,438 Z"/>
+        <path class="m-mordor" fill="url(#mordorG)" d="M700,404 C760,384 852,382 916,406 C946,418 950,470 936,516 C920,566 856,586 792,580 C736,574 696,548 686,504 C678,466 682,412 700,404 Z"/>
 
         <!-- forests, mountains and dunes are generated into these groups -->
         <g id="mTerrain"></g>
@@ -230,7 +218,7 @@
         <g id="mLabels"></g>
 
         <!-- compass rose -->
-        <g class="m-compass" transform="translate(240,676)">
+        <g class="m-compass" transform="translate(892,632)">
           <circle r="40" class="m-compass-ring"/>
           <path d="M0,-34 L7,-6 L0,0 L-7,-6 Z" class="m-compass-n"/>
           <path d="M0,34 L7,6 L0,0 L-7,6 Z" class="m-compass-s"/>
@@ -243,7 +231,7 @@
       <p class="map-swipe" aria-hidden="true">Veeg opzij om de hele kaart te zien →</p>
 
       <div class="map-info" id="mapInfo" aria-live="polite">
-        <p class="mi-empty">Klik op een plaats voor meer.</p>
+        <p class="mi-empty">Tik op een plaats voor meer.</p>
       </div>
     </div>
   </div>
@@ -252,10 +240,11 @@
 <!-- ══════════════════════ BEACONS ══════════════════════ -->
 <section id="bakens" class="sec sec-beacons">
   <div class="wrap">
-    <h2 class="sec-title"><span>De bakens van Gondor</span></h2>
+    <h2 class="sec-title"><span>The Beacons of Gondor</span></h2>
     <p class="sec-sub">Gondor roept om hulp. Steek het eerste baken aan.</p>
     <div class="beacons" id="beacons"></div>
     <p class="beacon-line" id="beaconLine">&nbsp;</p>
+    <p class="beacon-line-sub" id="beaconLineSub">&nbsp;</p>
   </div>
 </section>
 
@@ -266,7 +255,7 @@
     <div class="cards">
       <article class="card">
         <h3><span aria-hidden="true">🕗</span> Wees op tijd</h3>
-        <p>Deur open om <strong>08:00</strong> voor First &amp; Second Breakfast. Om <strong>08:35:38</strong> gaat het licht uit — dan wachten we op niemand meer. Een tovenaar komt nooit te laat; een gast wel.</p>
+        <p>Deur open om <strong>08:00</strong> voor First &amp; Second Breakfast. Om <strong>08:35:38</strong> gaat het licht uit — dan wachten we op niemand meer.</p>
       </article>
       <article class="card">
         <h3><span aria-hidden="true">🛋️</span> Neem comfort mee</h3>
@@ -297,11 +286,12 @@
 
 <footer class="footer">
   <div class="wrap footer-in">
-    <p class="foot-quote">“Alles wat wij hoeven te beslissen, is wat we doen met de tijd die ons gegeven is.”</p>
-    <p class="foot-meta">Gandalf Day · 24 oktober 2026 · <span id="footDays"></span></p>
-    <button class="balrog-btn" type="button" id="balrogBtn">Probeer te passeren</button>
-    <p class="foot-hint">Tip: sommige woorden openen deuren. Probeer eens iets in Elfs te typen.</p>
-    <p class="foot-credit">Pentekening van Gandalf: <a href="https://freesvg.org/gandalfs-drawing" rel="noopener">Openclipart</a>, publiek domein.</p>
+    <blockquote class="foot-quote">
+      <p class="fq-main">“All we have to decide is what to do with the time that is given us.”</p>
+      <p class="fq-sub">“Alles wat wij hoeven te beslissen, is wat we doen met de tijd die ons gegeven is.”</p>
+    </blockquote>
+    <p class="foot-meta">24 oktober 2026 · <span id="footDays"></span></p>
+    <p class="foot-hint">Tip: sommige woorden openen deuren. Probeer eens iets in het Elfs.</p>
   </div>
 </footer>
 
