@@ -1,6 +1,6 @@
 #!/bin/bash
 # Auto-deploy lotr-marathon when new commits are detected on main.
-# Mirrors the weerklank-viewer pattern: static files, no build step.
+# Static files, no build step: the repo is rsynced straight to the web root.
 REPO_DIR="/home/rolf/git/lotr-marathon"
 WEB_DIR="/var/www/lotr.rolf.bible/html"
 LOG_FILE="/home/rolf/git/lotr-marathon/deploy.log"
