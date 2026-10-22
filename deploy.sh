@@ -27,6 +27,7 @@ fi
 # every 5 minutes is cheap, and it self-heals if the web root drifts.
 if ! rsync -ac --delete --itemize-changes \
       --exclude '.git' \
+      --exclude '.claude' \
       --exclude '.gitignore' \
       --exclude 'deploy.sh' \
       --exclude 'deploy.log' \
