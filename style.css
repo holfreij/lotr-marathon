@@ -289,6 +289,9 @@ main, .topbar, .footer { position: relative; z-index: 2; }
 }
 
 /* ---------- 7. Countdown ---------- */
+/* No subtitle here, so the title carries the gap the subtitle would have. */
+.sec-count .sec-title { margin-bottom: 2rem; }
+@media (min-width: 700px) { .sec-count .sec-title { margin-bottom: 2.6rem; } }
 
 .count-grid {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
