@@ -12,7 +12,7 @@ then puts Gandalf's line at 09:59:57 on 24 October — near enough to ten o'cloc
 will notice.
 
 **The site deliberately never mentions this**, and never even shows the real time. Every
-visible time — hero, countdown subtitle, schedule, the `.ics` download — says **08:30**. Only
+visible time — hero, schedule, the `.ics` download — says **08:30**. Only
 the countdown itself runs to the true 08:35:38, so it can be left on screen on the day as the
 actual cue to press play. The ~5 minute discrepancy is deliberate and won't be noticed.
 
